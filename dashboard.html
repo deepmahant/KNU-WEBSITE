@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KNU | Admin & Student Dashboard</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Swiper JS for Slider -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+</head>
+<body class="font-['Outfit'] bg-slate-50 overflow-hidden flex h-screen w-screen">
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar-transition w-72 bg-slate-900 text-white flex flex-col h-full shadow-2xl relative z-20">
+        <!-- Logo Area -->
+        <div class="px-6 py-5 border-b border-slate-700 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-xl font-bold shadow-lg">K</div>
+                <span class="font-bold text-lg tracking-wide sidebar-text">KNU Portal</span>
+            </div>
+            <button id="toggleSidebar" class="text-slate-400 hover:text-white transition">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Scrollable Menu -->
+        <div class="flex-1 overflow-y-auto px-4 py-6 space-y-1 custom-scrollbar pb-24">
+            
+            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 mt-4 sidebar-text">Dashboard</p>
+            <a href="#" class="nav-btn bg-blue-600/20 text-blue-400 flex items-center gap-3 px-4 py-3 rounded-xl transition hover:bg-slate-800" data-target="home-section">
+                <i class="fas fa-home w-5 text-center"></i>
+                <span class="sidebar-text font-medium">Home Page</span>
+            </a>
+
+            <!-- Core Operations -->
+            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 mt-6 sidebar-text">Core Forms</p>
+
+            <a href="#" class="nav-btn flex items-center gap-3 px-4 py-2.5 rounded-lg transition hover:bg-slate-800 text-slate-300 hover:text-white" data-target="admission-section">
+                <i class="fas fa-user-plus w-5 text-center"></i>
+                <span class="sidebar-text">1. Admission Form</span>
+            </a>
+            <a href="#" class="nav-btn flex items-center gap-3 px-4 py-2.5 rounded-lg transition hover:bg-slate-800 text-slate-300 hover:text-white" data-target="registration-section">
+                <i class="fas fa-id-card w-5 text-center"></i>
+                <span class="sidebar-text">2. Registration Form</span>
+            </a>
+            <a href="#" class="nav-btn flex items-center gap-3 px-4 py-2.5 rounded-lg transition hover:bg-slate-800 text-slate-300 hover:text-white" data-target="exam-reg-section">
+                <i class="fas fa-newspaper w-5 text-center"></i>
+                <span class="sidebar-text">3. Exam Registration</span>
+            </a>
+            <a href="#" class="nav-btn flex items-center gap-3 px-4 py-2.5 rounded-lg transition hover:bg-slate-800 text-slate-300 hover:text-white" data-target="marksheet-section">
+                <i class="fas fa-file-invoice w-5 text-center"></i>
+                <span class="sidebar-text">4. Auto Marksheet</span>
+            </a>
+            <a href="#" class="nav-btn flex items-center gap-3 px-4 py-2.5 rounded-lg transition hover:bg-slate-800 text-slate-300 hover:text-white" data-target="id-card-section">
+                <i class="fas fa-address-card w-5 text-center"></i>
+                <span class="sidebar-text">5. ID Card Gen</span>
+            </a>
+            <a href="#" class="nav-btn flex items-center gap-3 px-4 py-2.5 rounded-lg transition hover:bg-slate-800 text-slate-300 hover:text-white" data-target="reg-card-section">
+                <i class="fas fa-address-book w-5 text-center"></i>
+                <span class="sidebar-text">6. Registration Card</span>
+            </a>
+            <a href="#" class="nav-btn flex items-center gap-3 px-4 py-2.5 rounded-lg transition hover:bg-slate-800 text-slate-300 hover:text-white" data-target="admit-card-section">
+                <i class="fas fa-ticket-alt w-5 text-center"></i>
+                <span class="sidebar-text">7. Admit Card</span>
+            </a>
+            <a href="#" class="nav-btn flex items-center gap-3 px-4 py-2.5 rounded-lg transition hover:bg-slate-800 text-slate-300 hover:text-white" data-target="fees-section">
+                <i class="fas fa-rupee-sign w-5 text-center"></i>
+                <span class="sidebar-text">8. Fees Management</span>
+            </a>
+
+            <!-- Extended Features using Submenus -->
+            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 mt-6 sidebar-text">Extended Portal</p>
+            
+            <!-- Academics -->
+            <div class="submenu-container">
+                <button class="submenu-toggle w-full flex items-center justify-between px-4 py-2.5 rounded-lg transition hover:bg-slate-800 text-slate-300 hover:text-white">
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-graduation-cap w-5 text-center"></i>
+                        <span class="sidebar-text">Academics</span>
+                    </div>
+                    <i class="fas fa-chevron-down text-xs sidebar-text transition-transform"></i>
+                </button>
+                <div class="submenu hidden pl-11 pr-4 py-2 space-y-2 border-l border-slate-700 ml-6 my-1">
+                    <a href="#" class="placeholder-feature block text-sm text-slate-400 hover:text-white transition">View Academic Progress</a>
+                    <a href="#" class="placeholder-feature block text-sm text-slate-400 hover:text-white transition">Check Attendance Record</a>
+                    <a href="#" class="placeholder-feature block text-sm text-slate-400 hover:text-white transition">View Syllabus</a>
+                    <a href="#" class="placeholder-feature block text-sm text-slate-400 hover:text-white transition">Download Notes</a>
+                    <a href="#" class="placeholder-feature block text-sm text-slate-400 hover:text-white transition">Upload Assignments</a>
+                    <a href="#" class="placeholder-feature block text-sm text-slate-400 hover:text-white transition">Join Online Classes</a>
+                </div>
+            </div>
+
+            <!-- Library -->
+            <div class="submenu-container mt-1">
+                <button class="submenu-toggle w-full flex items-center justify-between px-4 py-2.5 rounded-lg transition hover:bg-slate-800 text-slate-300 hover:text-white">
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-book w-5 text-center"></i>
+                        <span class="sidebar-text">Library</span>
+                    </div>
+                    <i class="fas fa-chevron-down text-xs sidebar-text transition-transform"></i>
+                </button>
+                <div class="submenu hidden pl-11 pr-4 py-2 space-y-2 border-l border-slate-700 ml-6 my-1">
+                    <a href="#" class="placeholder-feature block text-sm text-slate-400 hover:text-white transition">Search Books</a>
+                    <a href="#" class="placeholder-feature block text-sm text-slate-400 hover:text-white transition">Reserve Books</a>
+                    <a href="#" class="placeholder-feature block text-sm text-slate-400 hover:text-white transition">Download E-Books</a>
+                    <a href="#" class="placeholder-feature block text-sm text-slate-400 hover:text-white transition">Access Online Journals</a>
+                </div>
+            </div>
+
+            <!-- Communications -->
+            <div class="submenu-container mt-1">
+                <button class="submenu-toggle w-full flex items-center justify-between px-4 py-2.5 rounded-lg transition hover:bg-slate-800 text-slate-300 hover:text-white">
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-comments w-5 text-center"></i>
+                        <span class="sidebar-text">Communications</span>
+                    </div>
+                    <i class="fas fa-chevron-down text-xs sidebar-text transition-transform"></i>
+                </button>
+                <div class="submenu hidden pl-11 pr-4 py-2 space-y-2 border-l border-slate-700 ml-6 my-1">
+                    <a href="#" class="placeholder-feature block text-sm text-slate-400 hover:text-white transition">Chat with Teachers</a>
+                    <a href="#" class="placeholder-feature block text-sm text-slate-400 hover:text-white transition">Group Discussions</a>
+                    <a href="#" class="placeholder-feature block text-sm text-slate-400 hover:text-white transition">University Announcements</a>
+                    <a href="#" class="placeholder-feature block text-sm text-slate-400 hover:text-white transition">Event Notifications</a>
+                </div>
+            </div>
+
+            <!-- Campus & Student Life -->
+            <div class="submenu-container mt-1">
+                <button class="submenu-toggle w-full flex items-center justify-between px-4 py-2.5 rounded-lg transition hover:bg-slate-800 text-slate-300 hover:text-white">
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-building w-5 text-center"></i>
+                        <span class="sidebar-text">Campus Life</span>
+                    </div>
+                    <i class="fas fa-chevron-down text-xs sidebar-text transition-transform"></i>
+                </button>
+                <div class="submenu hidden pl-11 pr-4 py-2 space-y-2 border-l border-slate-700 ml-6 my-1">
+                    <a href="#" class="placeholder-feature block text-sm text-slate-400 hover:text-white transition">Hostel Registration</a>
+                    <a href="#" class="placeholder-feature block text-sm text-slate-400 hover:text-white transition">Transport Schedule</a>
+                    <a href="#" class="placeholder-feature block text-sm text-slate-400 hover:text-white transition">Sports Events</a>
+                    <a href="#" class="placeholder-feature block text-sm text-slate-400 hover:text-white transition">Cultural Events</a>
+                    <a href="#" class="placeholder-feature block text-sm text-slate-400 hover:text-white transition">Medical Services</a>
+                    <a href="#" class="placeholder-feature block text-sm text-slate-400 hover:text-white transition">Alumni Network</a>
+                </div>
+            </div>
+
+            <!-- Profile & Settings -->
+            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 mt-6 sidebar-text">Settings</p>
+            <a href="#" class="placeholder-feature flex items-center gap-3 px-4 py-2.5 rounded-lg transition hover:bg-slate-800 text-slate-300 hover:text-white">
+                <i class="fas fa-user-circle w-5 text-center"></i>
+                <span class="sidebar-text">My Profile</span>
+            </a>
+            <a href="#" class="placeholder-feature flex items-center gap-3 px-4 py-2.5 rounded-lg transition hover:bg-slate-800 text-slate-300 hover:text-white">
+                <i class="fas fa-cog w-5 text-center"></i>
+                <span class="sidebar-text">App Settings</span>
+            </a>
+            <a href="#" id="logoutBtn" class="flex items-center gap-3 px-4 py-2.5 rounded-lg transition hover:bg-red-500/20 text-red-400 hover:text-red-300">
+                <i class="fas fa-sign-out-alt w-5 text-center"></i>
+                <span class="sidebar-text">Logout</span>
+            </a>
+
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col h-full overflow-hidden relative">
+        
+        <!-- Top Navbar -->
+        <header class="bg-white/80 backdrop-blur-md shadow-sm z-10 p-4 flex justify-between items-center border-b border-slate-200">
+            <div>
+                <h2 class="text-xl font-bold text-slate-800" id="pageTitle">University Home</h2>
+                <p class="text-sm text-slate-500" id="dateTimeDisplay"></p>
+            </div>
+            <div class="flex items-center gap-5">
+                <button class="text-slate-400 hover:text-blue-600 transition relative placeholder-feature">
+                    <i class="fas fa-bell text-xl"></i>
+                    <span class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-bold">3</span>
+                </button>
+                <div class="flex items-center gap-3 cursor-pointer placeholder-feature">
+                    <div class="text-right hidden md:block">
+                        <p class="text-sm font-bold text-slate-800">Deep Mahanta</p>
+                        <p class="text-xs text-slate-500">BCA - Semester 4</p>
+                    </div>
+                    <img src="https://ui-avatars.com/api/?name=Deep+Mahanta&background=2563eb&color=fff" alt="Profile" class="w-10 h-10 rounded-full border-2 border-white shadow-md">
+                </div>
+            </div>
+        </header>
+
+        <!-- Dynamic Content Area -->
+        <div class="flex-1 overflow-y-auto p-6 scroll-smooth bg-slate-50" id="dynamicContentArea">
+            <!-- Content will be injected here via main.js -->
+        </div>
+
+    </main>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
